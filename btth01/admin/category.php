@@ -1,3 +1,11 @@
+<?php 
+include "./connect.php";
+$conn= connect();
+$sql = "Select * from theloai";
+$stmt = $conn->query($sql);
+$theloais = $stmt->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,27 +65,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php
+                        $i = 0;
+                    foreach ($theloais as $theloai){
+                        $i = $i + 1;
+                    ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Nhạc trữ tình</td>
+                            <th scope="row"><?php echo $i ?></th>
+                            <td><?= $theloai['ten_tloai'] ?></td>
                             <td>
-                                <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="edit_category.php?ma_tloai=<?= $theloai['ma_tloai']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                             <td>
                                 <a href=""><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Nhạc cách mạng</td>
-                            <td>
-                                <a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                       
+                       <?php
+                       }
+                       ?>
                     </tbody>
                 </table>
             </div>
