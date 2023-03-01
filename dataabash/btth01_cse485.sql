@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 22, 2023 at 08:05 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 01, 2023 lúc 07:07 AM
+-- Phiên bản máy phục vụ: 10.4.27-MariaDB
+-- Phiên bản PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `btth01_cse485`
+-- Cơ sở dữ liệu: `btth01_cse485`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baiviet`
+-- Cấu trúc bảng cho bảng `baiviet`
 --
 
 CREATE TABLE `baiviet` (
@@ -40,7 +40,7 @@ CREATE TABLE `baiviet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `baiviet`
+-- Đang đổ dữ liệu cho bảng `baiviet`
 --
 
 INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `noidung`, `ma_tgia`, `ngayviet`, `hinhanh`) VALUES
@@ -61,7 +61,34 @@ INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tacgia`
+-- Cấu trúc bảng cho bảng `nguoi_dung`
+--
+
+CREATE TABLE `nguoi_dung` (
+  `id` int(11) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `pass` varchar(150) NOT NULL,
+  `role` varchar(30) NOT NULL DEFAULT 'client',
+  `active` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nguoi_dung`
+--
+
+INSERT INTO `nguoi_dung` (`id`, `email`, `phone`, `username`, `pass`, `role`, `active`) VALUES
+(1, 'sdseu@gmail.com', '02394235', 'phu', '123', '1', 1),
+(2, 'oioiuf@gmail.com', '02394235', 'anh', '123', '0', 1),
+(3, 'sdseu1@gmail.com', '003353535', 'phuong', '123', '0', 1),
+(4, 'quytu0590@gmail.com', '324232', 'tranquydat', '123', '1', 1),
+(5, 'intern-bachct3004@co-well.vn', '123415324', 'quyen', '123', '0', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tacgia`
 --
 
 CREATE TABLE `tacgia` (
@@ -71,7 +98,7 @@ CREATE TABLE `tacgia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tacgia`
+-- Đang đổ dữ liệu cho bảng `tacgia`
 --
 
 INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
@@ -87,7 +114,7 @@ INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `theloai`
+-- Cấu trúc bảng cho bảng `theloai`
 --
 
 CREATE TABLE `theloai` (
@@ -96,12 +123,12 @@ CREATE TABLE `theloai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `theloai`
+-- Đang đổ dữ liệu cho bảng `theloai`
 --
 
 INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
 (1, 'Nhạc trẻ'),
-(2, 'Nhạc trữ tình'),
+(2, 'Nhạc trữ tình2'),
 (3, 'Nhạc cách mạng'),
 (4, 'Nhạc thiếu nhi'),
 (5, 'Nhạc quê hương'),
@@ -110,26 +137,42 @@ INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
 (8, 'R&B');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `baiviet`
+-- Chỉ mục cho bảng `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`ma_bviet`);
 
 --
--- Indexes for table `tacgia`
+-- Chỉ mục cho bảng `nguoi_dung`
+--
+ALTER TABLE `nguoi_dung`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tacgia`
 --
 ALTER TABLE `tacgia`
   ADD PRIMARY KEY (`ma_tgia`);
 
 --
--- Indexes for table `theloai`
+-- Chỉ mục cho bảng `theloai`
 --
 ALTER TABLE `theloai`
   ADD PRIMARY KEY (`ma_tloai`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `nguoi_dung`
+--
+ALTER TABLE `nguoi_dung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
