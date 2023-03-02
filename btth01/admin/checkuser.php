@@ -8,7 +8,7 @@
  */
 function checkuser(string $user,string $pass){
     $conn = connect();
-    $sql = "SELECT role FROM users  WHERE  username ='".$user."' AND pass ='".$pass."'";
+    $sql = "SELECT role FROM nguoi_dung  WHERE  username ='".$user."' AND pass ='".$pass."'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $kq = $stmt->fetch();
